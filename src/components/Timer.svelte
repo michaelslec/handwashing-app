@@ -3,8 +3,9 @@
   const handWashingTime = 20;
   let secondsLeft = handWashingTime;
 
-  setInterval(() => {
-    secondsLeft -= 1;
+  const handWashCounter = setInterval(() => {
+    if (secondsLeft == 0) clearInterval(handWashCounter);
+    else secondsLeft -= 1;
   }, 1000);
 </script>
 
