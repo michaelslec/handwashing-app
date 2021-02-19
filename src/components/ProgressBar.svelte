@@ -12,8 +12,6 @@
 
 <div bp="grid">
   <div class="progress-container" bp="offset-5@md 4@md 12@sm">
-    <div class="progress-bar" style="width: 20%;">
-      <span class="sr-only"> % </span>
-    </div>
+    <div class="progress-bar" style="width: 20%;"><span class="sr-only" /></div>
   </div>
 </div>
