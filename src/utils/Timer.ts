@@ -1,3 +1,5 @@
+import { countdownSecondsRemaining } from "../stores/timer";
+
 export class Timer {
   private timerID: NodeJS.Timeout;
 
@@ -11,8 +13,10 @@ export class Timer {
   }
 
   countDown = () => {
-    if (this.secondsRemaining == 0) this.stop();
-    else this.secondsRemaining -= 1;
+    if (this.secondsRemaining == 0) return this.stop();
+
+    this.secondsRemaining -= 1;
+    countdownSecondsRemaining.set(this.secondsRemaining);
   };
 
   start() {

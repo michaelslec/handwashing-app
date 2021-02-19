@@ -1,8 +1,11 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
   import { Timer } from "../utils/Timer";
+  import { countdownSecondsRemaining } from "../stores/timer";
+  import { handwashingTime } from "../constants";
+
   const timer = new Timer(20);
-  $: percentage = timer.getPercentage();
+  $: percentage = ($countdownSecondsRemaining / handwashingTime) * 100;
 </script>
 
 <style>
@@ -18,10 +21,13 @@
 </style>
 
 <div bp="grid">
-  <h2 bp="offset-5@md 4@md 12@sm">Seconds Left: {percentage}</h2>
+  <h2 bp="offset-5@md 4@md 12@sm">
+    Seconds Left:
+    {$countdownSecondsRemaining}
+  </h2>
 </div>
 
-<ProgressBar progress={timer.getPercentage()} />
+<ProgressBar progress={percentage} />
 
 <div bp="grid">
   <button
