@@ -5,7 +5,8 @@
   import { handwashingTime } from "../constants";
 
   const timer = new Timer(handwashingTime);
-  $: percentage = ($countdownSecondsRemaining / timer.time) * 100;
+  $: percentage =
+    ((handwashingTime - $countdownSecondsRemaining) / timer.time) * 100;
 </script>
 
 <div bp="grid">
