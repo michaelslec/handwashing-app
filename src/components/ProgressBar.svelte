@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { kBP_GRID_STYLE } from "../constants";
   export let progress = 0;
 </script>
 
 <div bp="grid">
-  <div class="progress-container" bp="offset-5@md 4@md 12@sm">
+  <div class="progress-container" bp={kBP_GRID_STYLE}>
     <div class="progress-bar" style="width: {progress}%;">
       <span class="sr-only">%</span>
     </div>

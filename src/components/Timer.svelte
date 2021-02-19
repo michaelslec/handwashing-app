@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
-  import { kHANDWASHING_TIME } from "../constants";
+  import { kHANDWASHING_TIME, kBP_GRID_STYLE } from "../constants";
 
   let timeElapsed = 0;
   let isRunning = false;
@@ -21,7 +21,7 @@
 </script>
 
 <div bp="grid">
-  <h2 bp="offset-5@md 4@md 12@sm">
+  <h2 bp={kBP_GRID_STYLE}>
     Seconds Left: {kHANDWASHING_TIME - timeElapsed}
   </h2>
 </div>
@@ -32,7 +32,7 @@
   <button
     disabled={isRunning}
     on:click={startTimer}
-    bp="offset-5@md 4@md 12@sm"
+    bp={kBP_GRID_STYLE}
     class="start">Start</button
   >
 </div>

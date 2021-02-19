@@ -1,9 +1,9 @@
+<script lang="ts">
+  import { kBP_GRID_STYLE } from "../constants";
+</script>
+
 <div bp="grid">
-  <img
-    bp="offset-5@md 4@md 12@sm"
-    src="handwashing.gif"
-    alt="How to wash your hands"
-  />
+  <img bp={kBP_GRID_STYLE} src="handwashing.gif" alt="How to wash your hands" />
 </div>
 
 <style>
