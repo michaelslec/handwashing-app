@@ -2,12 +2,16 @@
   import ProgressBar from "./ProgressBar.svelte";
   const handWashingTime = 20;
   let secondsLeft = handWashingTime;
+  let isRunning = false;
 
   function startTimer() {
-    const handWashCounter = setInterval(() => {
-      if (secondsLeft == 0) clearInterval(handWashCounter);
-      else secondsLeft -= 1;
-    }, 1000);
+    if (!isRunning) {
+      const handWashCounter = setInterval(() => {
+        if (secondsLeft == 0) clearInterval(handWashCounter);
+        else secondsLeft -= 1;
+      }, 1000);
+      isRunning = true;
+    }
   }
 </script>
 
