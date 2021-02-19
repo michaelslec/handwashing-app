@@ -1,27 +1,37 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
-  import { Timer } from "../utils/Timer";
-  import { countdownSecondsRemaining } from "../stores/timer";
   import { handwashingTime } from "../constants";
 
-  const timer = new Timer(handwashingTime);
-  $: percentage =
-    ((handwashingTime - $countdownSecondsRemaining) / timer.time) * 100;
+  let timeElapsed = 0;
+  let isRunning = false;
+  function startTimer() {
+    timeElapsed = 0;
+
+    if (!isRunning) {
+      isRunning = true;
+      const timer = setInterval(() => {
+        timeElapsed += 1;
+        if (timeElapsed == handwashingTime) {
+          clearInterval(timer);
+          isRunning = false;
+        }
+      }, 1000);
+    }
+  }
 </script>
 
 <div bp="grid">
   <h2 bp="offset-5@md 4@md 12@sm">
-    Seconds Left:
-    {$countdownSecondsRemaining}
+    Seconds Left: {handwashingTime - timeElapsed}
   </h2>
 </div>
 
-<ProgressBar progress={percentage} />
+<ProgressBar progress={(timeElapsed / handwashingTime) * 100} />
 
 <div bp="grid">
   <button
-    disabled={timer.isCurrentlyRunning}
-    on:click={() => timer.start()}
+    disabled={isRunning}
+    on:click={startTimer}
     bp="offset-5@md 4@md 12@sm"
     class="start">Start</button
   >
