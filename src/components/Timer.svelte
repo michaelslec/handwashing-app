@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
-  import { handwashingTime } from "../constants";
+  import { kHANDWASHING_TIME } from "../constants";
 
   let timeElapsed = 0;
   let isRunning = false;
@@ -11,7 +11,7 @@
       isRunning = true;
       const timer = setInterval(() => {
         timeElapsed += 1;
-        if (timeElapsed == handwashingTime) {
+        if (timeElapsed == kHANDWASHING_TIME) {
           clearInterval(timer);
           isRunning = false;
         }
@@ -22,11 +22,11 @@
 
 <div bp="grid">
   <h2 bp="offset-5@md 4@md 12@sm">
-    Seconds Left: {handwashingTime - timeElapsed}
+    Seconds Left: {kHANDWASHING_TIME - timeElapsed}
   </h2>
 </div>
 
-<ProgressBar progress={(timeElapsed / handwashingTime) * 100} />
+<ProgressBar progress={(timeElapsed / kHANDWASHING_TIME) * 100} />
 
 <div bp="grid">
   <button

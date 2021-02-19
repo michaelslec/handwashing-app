@@ -1,1 +1,1 @@
-export const handwashingTime = 20;
+export const kHANDWASHING_TIME = 20;
