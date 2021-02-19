@@ -10,6 +10,7 @@ export class Timer {
   constructor(time: number) {
     this.time = time;
     this.secondsRemaining = time;
+    countdownSecondsRemaining.set(this.secondsRemaining);
   }
 
   countDown = () => {
@@ -21,14 +22,16 @@ export class Timer {
 
   start() {
     if (!this.isCurrentlyRunning) {
-      this.timerID = setInterval(this.countDown, 1000);
       this.isCurrentlyRunning = true;
+      countdownSecondsRemaining.set(this.time);
+      this.timerID = setInterval(this.countDown, 1000);
     }
   }
 
   stop() {
     clearTimeout(this.timerID);
     this.isCurrentlyRunning = false;
+    this.secondsRemaining = this.time;
   }
 
   getPercentage() {

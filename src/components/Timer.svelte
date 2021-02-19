@@ -4,8 +4,8 @@
   import { countdownSecondsRemaining } from "../stores/timer";
   import { handwashingTime } from "../constants";
 
-  const timer = new Timer(20);
-  $: percentage = ($countdownSecondsRemaining / handwashingTime) * 100;
+  const timer = new Timer(handwashingTime);
+  $: percentage = ($countdownSecondsRemaining / timer.time) * 100;
 </script>
 
 <style>
