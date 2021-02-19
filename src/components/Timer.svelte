@@ -2,6 +2,10 @@
   import ProgressBar from "./ProgressBar.svelte";
   const handWashingTime = 20;
   let secondsLeft = handWashingTime;
+
+  setInterval(() => {
+    secondsLeft -= 1;
+  }, 1000);
 </script>
 
 <style>
