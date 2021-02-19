@@ -1,5 +1,7 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
+  const handWashingTime = 20;
+  let secondsLeft = handWashingTime;
 </script>
 
 <style>
@@ -15,10 +17,10 @@
 </style>
 
 <div bp="grid">
-  <h2 bp="offset-5@md 4@md 12@sm">Seconds Left:</h2>
+  <h2 bp="offset-5@md 4@md 12@sm">Seconds Left: {secondsLeft}</h2>
 </div>
 
-<ProgressBar />
+<ProgressBar progress={(secondsLeft / handWashingTime) * 100} />
 
 <div bp="grid">
   <button bp="offset-5@md 4@md 12@sm" class="start">Start</button>
