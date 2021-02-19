@@ -3,10 +3,12 @@
   const handWashingTime = 20;
   let secondsLeft = handWashingTime;
 
-  const handWashCounter = setInterval(() => {
-    if (secondsLeft == 0) clearInterval(handWashCounter);
-    else secondsLeft -= 1;
-  }, 1000);
+  function startTimer() {
+    const handWashCounter = setInterval(() => {
+      if (secondsLeft == 0) clearInterval(handWashCounter);
+      else secondsLeft -= 1;
+    }, 1000);
+  }
 </script>
 
 <style>
@@ -28,5 +30,8 @@
 <ProgressBar progress={(secondsLeft / handWashingTime) * 100} />
 
 <div bp="grid">
-  <button bp="offset-5@md 4@md 12@sm" class="start">Start</button>
+  <button
+    on:click={startTimer}
+    bp="offset-5@md 4@md 12@sm"
+    class="start">Start</button>
 </div>
