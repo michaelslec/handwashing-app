@@ -1,9 +1,11 @@
 <script lang="ts">
   import ProgressBar from "./ProgressBar.svelte";
   import { kHANDWASHING_TIME, kBP_GRID_STYLE } from "../constants";
+  import { createEventDispatcher } from "svelte";
 
   let timeElapsed = 0;
   let isRunning = false;
+  const dispatch = createEventDispatcher();
   function startTimer() {
     timeElapsed = 0;
 
@@ -14,6 +16,7 @@
         if (timeElapsed == kHANDWASHING_TIME) {
           clearInterval(timer);
           isRunning = false;
+          dispatch("timer-end");
         }
       }, 1000);
     }
